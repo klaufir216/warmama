@@ -1,0 +1,7 @@
+IPy==1.1
+cheroot==8.5.2
+PyMySQL==1.0.2
+future==0.18.2
+jaraco.functools==3.3.0
+more-itertools==8.9.0
+six==1.16.0
