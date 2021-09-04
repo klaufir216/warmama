@@ -12,3 +12,4 @@ src/__pycache__/
 src/database/__pycache__/
 src/game/__pycache__/
 src/session/__pycache__/
+src/web/__pycache__/
