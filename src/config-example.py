@@ -27,7 +27,7 @@ cgi_mode = 'wsgi'
 
 report_dir = '/var/log/warmama/reports'
 logfile_name = '/var/log/warmama/warmama.log'
-logfile_append = True	# or False
+logfile_append = True  # or False
 
 proxy_addr = ["127.0.0.1", "::1"]
 
@@ -44,7 +44,7 @@ db_debug_print = False
 
 # URL to send the authentication request
 # getauth_url = 'http://localhost:6000/getauth'	# local to local
-getauth_url = 'http://www-dev.warsow.net:1337/mmauth'	# external to external
+getauth_url = 'http://www-dev.warsow.net:1337/mmauth'  # external to external
 
 # this URL is given as a parameter to above request
 # it is the URL the auth-server has to respond to
@@ -65,4 +65,3 @@ USER_NUM = 2
 
 # in seconds
 TICKET_EXPIRATION = 60.0
-
