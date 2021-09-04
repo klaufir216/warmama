@@ -4,6 +4,7 @@
 Created on 28.3.2011
 @author: hc
 """
+from __future__ import unicode_literals
 from __future__ import print_function
 import traceback
 import re
@@ -26,7 +27,6 @@ import config
 from builtins import object
 from builtins import range
 from builtins import str
-from __future__ import unicode_literals
 
 ###################
 #
@@ -218,12 +218,7 @@ class Warmama(object):
                 msg))
             self.logFile.flush()
 
-    ##################################
-    #
-    #			HANDLERS
-    #
-    ##################################
-
+    # HANDLERS
     def Heartbeat(self, sessionId, ip, type):
         try:
             if(sessionId == 0):
@@ -252,14 +247,8 @@ class Warmama(object):
             self.log("Heartbeat exception %s" % e)
             return '0'
 
-    ##################################
-    #
-    #			SERVER
-    #
-    ##################################
-
+    # SERVER
     # TODO: Refine the JSON-api. Consider status/ready items and their meaning.
-
     # authkey's consist of letters, digits and _- (ie URL encoding)
     def ValidateAuthKey(self, authkey):
         for a in authkey:
@@ -636,8 +625,8 @@ class Warmama(object):
 
             uuid_retries = 0
             uuid = sv.next_match_uuid
-            while uuid_retries < 10 and self.dbHandler.CheckMatchUUID(
-                    uuid) == False:
+            while uuid_retries < 10 and not self.dbHandler.CheckMatchUUID(
+                    uuid):
                 # diplicate match record found, attempt to store under a
                 # different uuid
                 uuid = self.dbHandler.GenerateMatchUUID(ssession)
@@ -727,9 +716,9 @@ class Warmama(object):
 
         # this here returns "state uuid"
         # where 'state' is
-        #	-1 for 'we gave a handle for you' (uuid = handle)
-        # 	1 for 'login isnt ready yet' (uuid = 0)
-        #	2 for 'login ready' (uuid = session_id)
+        #  -1 for 'we gave a handle for you' (uuid = handle)
+        #   1 for 'login isnt ready yet' (uuid = 0)
+        #   2 for 'login ready' (uuid = session_id)
         # so "2 0" means error
 
         # TEST
@@ -849,7 +838,7 @@ class Warmama(object):
 
         # don't perform the call right now, wait until ClientAuthenticate
         # if( self.steamHandler.ClientLogin( id, ticket_decoded ) != True ) :
-        #	return '2 0'
+        #   return '2 0'
 
         try:
             # we are on 1st step, start the login process
@@ -997,7 +986,7 @@ class Warmama(object):
                  h_steam_id, steam_ticket) = self.dbHandler.GetUserLogin(handle)
                 if(h_steam_id != steam_id):
                     return ''
-                if(self.steamHandler.ClientLogin(steam_id, steam_ticket) != True):
+                if(not self.steamHandler.ClientLogin(steam_id, steam_ticket)):
                     return ''
 
             # parameters: handle, login(not saved), ready, valid
