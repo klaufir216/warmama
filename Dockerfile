@@ -15,10 +15,6 @@ RUN pip install --upgrade pip \
     && pip install --no-cache-dir future
 
 COPY ./src /app
-COPY ./cgi.patch /tmp/
-
-RUN patch /usr/local/lib/python3.8/cgi.py < /tmp/cgi.patch \
-    && rm /tmp/cgi.patch
 
 RUN cp -p /app/config-example.py /app/config-real.py
 

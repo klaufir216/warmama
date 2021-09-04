@@ -694,7 +694,10 @@ class FieldStorage:
                 if not data:
                     self.done = -1
                     break
-                self.file.write(data)
+                if self._binary_file:
+                    self.file.write(data)
+                else:
+                    self.file.write(data.decode())
                 todo = todo - len(data)
 
     def read_lines(self):
