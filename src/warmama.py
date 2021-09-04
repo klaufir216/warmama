@@ -5,9 +5,6 @@ Created on 28.3.2011
 @author: hc
 """
 from __future__ import print_function
-import urllib.error
-import urllib.parse
-import urllib.request
 import traceback
 import re
 import errno
