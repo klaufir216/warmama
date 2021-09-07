@@ -5,16 +5,18 @@ Created on 30.3.2011
 @author: hc
 """
 from __future__ import print_function
+from __future__ import absolute_import
+from __future__ import unicode_literals
 import re
 import types
 import inspect
 import atexit
 import threading
 import datetime
+import pymysql
+pymysql.install_as_MySQLdb()
 import MySQLdb.cursors
 import MySQLdb
-from __future__ import absolute_import
-from __future__ import unicode_literals
 
 ###################
 #
@@ -28,8 +30,6 @@ from database import models
 from database.models import *
 from database import dbpool
 
-import pymysql
-pymysql.install_as_MySQLdb()
 
 
 ###################
